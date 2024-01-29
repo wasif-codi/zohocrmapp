@@ -24,7 +24,7 @@ public String getEmailId(@RequestParam("email") String email, Model model )
 }
 	
 	@PostMapping("/triggerEmail")
-	public String tiggerEmail(Email email,Model model) {
+	 public String tiggerEmail(Email email,Model model) {
 		emailService.sendEmail(email.getEmail(), email.getSubject(), email.getContent());
 		model.addAttribute("msg", "email sent");
 		return "compose_email"; 

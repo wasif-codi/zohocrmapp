@@ -48,6 +48,7 @@ public String triggerEMail(Email email)
 {
 	return "lead_info";
 }
+
 @PostMapping("/convertLead")
   public String convertLead(@RequestParam("id") long id, Model model) {
 	Lead lead= leadService.findLeadById(id);
@@ -58,6 +59,7 @@ public String triggerEMail(Email email)
 	contact.setEmail(lead.getEmail());
 	contact.setMobile(lead.getMobile());
 	contact.setSource(lead.getSource());
+	
 	contactService.saveContact(contact);
 	leadService.deleteLeadById(id);
 	List<Contact> contacts = contactService.getAllContacts();
@@ -65,11 +67,11 @@ public String triggerEMail(Email email)
 		return "list_contacts";
   }
 
+
  @RequestMapping("/listall")
   public String listAllLeads(Model model) {
 	List<Lead> leads = leadService.getAllLeads();
 	model.addAttribute("leads", leads);
-	  
 	  return "list_leads";
 	  
   }

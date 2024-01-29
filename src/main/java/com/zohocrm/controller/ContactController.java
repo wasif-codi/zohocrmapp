@@ -21,8 +21,7 @@ public class ContactController {
 		this.contactService = contactService;
 	}
 
-
-	@RequestMapping("/listallcontacts")
+      @RequestMapping("/listallcontacts")
 	  public String listAllLeads(Model model) {
 		List<Contact> contacts = contactService.getAllContacts();
 		model.addAttribute("contacts", contacts);
